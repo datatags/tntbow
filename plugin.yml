@@ -1,0 +1,16 @@
+name: tntbow
+main: com.gmail.gustllund.Tntbow
+version: 2.0
+authors: [goodstuff20, Datatags]
+api-version: 1.13
+commands:
+    tntbow:
+        description: Gives you a tntbow
+        permission: tntbow.give
+permissions:
+    tntbow.shoot:
+        description: Allows you to shoot tntbow!
+        default: op
+    tntbow.give:
+        description: Allows you to magically obtain a tntbow with commands
+        default: op
