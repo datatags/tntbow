@@ -82,8 +82,21 @@ public class Tntbow extends JavaPlugin implements Listener {
         	return;
         }
         if (ammoOn && player.getGameMode() != GameMode.CREATIVE) {
-            if (player.getInventory().removeItem(new ItemStack(Material.TNT)).size() > 0) {
+            if (!player.getInventory().contains(Material.TNT)) {
             	player.sendMessage(ChatColor.RED + "You don't have enough ammo!");
+            	return;
+            }
+            ItemStack tnt = new ItemStack(Material.TNT);
+            if (!player.getInventory().contains(tnt)) {
+            	for (ItemStack is : player.getInventory()) {
+                	if (is.getType() != Material.TNT) continue;
+                	tnt = is.clone();
+                	tnt.setAmount(1);
+                	break;
+                }
+            }
+            if (player.getInventory().removeItem(tnt).size() > 0) {
+            	getLogger().severe("Failed to remove TNT from inventory :(");
             	return;
             }
         }
